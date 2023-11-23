@@ -7,7 +7,7 @@ vim.opt.showmode = false
 vim.opt.updatetime = 100
 vim.wo.signcolumn = "yes"
 vim.opt.scrolloff = 8
-vim.opt.wrap = false
+vim.opt.wrap = true
 vim.wo.linebreak = true
 vim.opt.virtualedit = "block"
 vim.opt.undofile = true
@@ -49,3 +49,6 @@ vim.opt.fillchars = {
     foldsep = "│",
     foldclose = "▸"
 }
+
+-- Disable swap files
+viw.opt.swapfile = false
