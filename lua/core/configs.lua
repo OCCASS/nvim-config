@@ -51,4 +51,4 @@ vim.opt.fillchars = {
 }
 
 -- Disable swap files
-viw.opt.swapfile = false
+vim.opt.swapfile = false
