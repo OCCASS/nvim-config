@@ -6,8 +6,9 @@ local lspconfig = require('lspconfig')
 lspconfig.pyright.setup {}
 lspconfig.tsserver.setup {}
 lspconfig.prismals.setup {}
-lspconfig.cssls.setup {capabilities = capabilities}
+-- lspconfig.cssls.setup {capabilities = capabilities}
 lspconfig.golangci_lint_ls.setup {}
+lspconfig.gopls.setup {}
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -37,10 +38,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
         --     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
         -- end, opts)
         -- vim.keymap.set('n', '<Leader>D', vim.lsp.buf.type_definition, opts)
-        vim.keymap.set('n', '<Leader>lr', vim.lsp.buf.rename, opts)
-        vim.keymap.set({'n', 'v'}, '<Leader>la', vim.lsp.buf.code_action, opts)
+        vim.keymap.set('n', ',lr', vim.lsp.buf.rename, opts)
+        vim.keymap.set({'n', 'v'}, ',la', vim.lsp.buf.code_action, opts)
         -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-        vim.keymap.set('n', '<Leader>lf',
+        vim.keymap.set('n', ',lf',
                        function() vim.lsp.buf.format {async = true} end, opts)
     end
 })

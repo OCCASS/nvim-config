@@ -52,3 +52,13 @@ vim.opt.fillchars = {
 
 -- Disable swap files
 vim.opt.swapfile = false
+
+-- Remap 'dd' to black hole register (delete entire line)
+vim.api.nvim_set_keymap('n', 'dd', '"_dd', { noremap = true, silent = true })
+
+-- Remap 'd' (delete motion) to black hole register
+vim.api.nvim_set_keymap('n', 'd', '"_d', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', 'd', '"_d', { noremap = true, silent = true })
+
+-- Folding
+vim.opt.foldmethod = "manual"

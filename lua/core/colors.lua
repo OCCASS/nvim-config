@@ -6,12 +6,4 @@ function gruvbox()
     vim.cmd.colorscheme("gruvbox")
 end
 
-function solorizedOsaka()
-    require("solarized-osaka").setup({
-        transparent = true,
-        styles = {keywords = {bold = true}, functions = {}}
-    })
-    vim.cmd [[colorscheme solarized-osaka]]
-end
-
-solorizedOsaka()
+gruvbox()

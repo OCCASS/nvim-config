@@ -10,7 +10,7 @@ require("neo-tree").setup({
     close_if_last_window = true,
     enable_git_status = false,
     window = {
-        width = 30,
+        width = 35,
         mapping_options = {noremap = true, nowait = true},
         mappings = {}
     },

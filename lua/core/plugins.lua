@@ -28,6 +28,6 @@ require("lazy").setup({
         tag = "0.1.4",
         dependencies = {"nvim-lua/plenary.nvim"}
     }, {"jose-elias-alvarez/null-ls.nvim"},
-    {"L3MON4D3/LuaSnip", version = "v2.*", build = "make install_jsregexp"}
-
+    {"L3MON4D3/LuaSnip", version = "v2.*", build = "make install_jsregexp"},
+    {"stevearc/conform.nvim", opts = {}},
 })
