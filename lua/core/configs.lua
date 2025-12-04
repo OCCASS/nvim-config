@@ -25,8 +25,8 @@ vim.opt.relativenumber = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
--- Clipboard
-vim.opt.clipboard = "unnamedplus"
+-- Clipboard (disabled to prevent sync with system clipboard)
+-- vim.opt.clipboard = "unnamedplus"
 
 -- Shorter messages
 vim.opt.shortmess:append("c")
@@ -60,5 +60,27 @@ vim.api.nvim_set_keymap('n', 'dd', '"_dd', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'd', '"_d', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', 'd', '"_d', { noremap = true, silent = true })
 
+-- Remap 'x' (character deletion) to black hole register to prevent replacing text from going to clipboard
+vim.api.nvim_set_keymap('n', 'x', '"_x', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', 'x', '"_x', { noremap = true, silent = true })
+
+-- Remap 'c' (change motion) to black hole register to prevent replaced text from going to clipboard
+vim.api.nvim_set_keymap('n', 'c', '"_c', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', 'c', '"_c', { noremap = true, silent = true })
+
 -- Folding
 vim.opt.foldmethod = "manual"
+
+-- Disable the behavior where replaced text during paste operations gets stored in the clipboard
+-- Configure Neovim to prevent replaced text from being stored in default register during paste operations
+-- The best approach is to ensure that when we paste over visual selections,
+-- the replaced text goes to the black hole register
+
+-- For visual mode paste operations, ensure replaced text goes to black hole register
+-- This handles the case when you visually select text and then paste over it
+vim.keymap.set('x', 'p', '"_dP', { noremap = true, silent = true })
+vim.keymap.set('x', 'P', '"_dP', { noremap = true, silent = true })
+
+-- In normal mode, 'p' and 'P' will paste after/before the cursor and shouldn't replace text
+-- unless pasting over a character with 'p' when at the end of a line, etc.
+-- So we don't need to remap them as they don't typically replace text in normal mode
